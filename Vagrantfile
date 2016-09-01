@@ -2,6 +2,11 @@ Vagrant.configure("2") { |config|
     config.vm.box = "boxcutter/centos72"
 }
 
+# Bug notes:
+#   Vagrant 1.8.5 has at least one (perhaps more) bug in the code it uses
+#   to replace the standard insecure key with a locally generated one.
+#   The current workaround is to disable the replacement with:
+#       config.ssh.insert_key = false
 # Notes:
 #   Full docs at https://docs.vagrantup.com
 #   Argument to configure() is configuration version, always "2".
