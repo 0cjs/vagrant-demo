@@ -1,5 +1,8 @@
 Vagrant.configure('2') { |c|
     c.vm.box = 'boxcutter/centos67'
+    # Don't actually run setup without saving authorized_hosts first.
+    c.vm.provision 'file',
+        source: '~/.home/public', destination: '~/.home/public'
 }
 
 # Bug notes:
