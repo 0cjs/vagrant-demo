@@ -1,7 +1,7 @@
 Vagrant.configure('2') { |c|
     c.vm.box = 'boxcutter/centos72'
 
-    # Don't run .home/public/Setup without saving authorized_hosts first!
+    #   Don't run .home/public/Setup without saving authorized_hosts first!
     dhsrc = ENV['HOME'] + '/.home/public'; Dir.exist?(dhsrc) \
         && c.vm.provision('file', source: dhsrc, destination: '~/.home/public')
 }
@@ -15,9 +15,9 @@ Vagrant.configure('2') { |c|
 #   Full docs at https://docs.vagrantup.com
 #   Argument to configure() is configuration version, always '2'.
 #   Search for boxes at https://atlas.hashicorp.com/search.
-#   Multiple hosts derived from base configuration (named "default"):
-#       config.vm.define("host1") { |h|
-#           h.vm.network "private_network", ip: '192.168.50.3'; #etc
+#   Multiple hosts derived from base configuration (named 'default'):
+#       config.vm.define('host1') { |h|
+#           h.vm.network 'private_network', ip: '192.168.50.3'; #etc
 #       }
 #   Map ports with
 #       c.vm.network 'forwarded_port', guest: 80, host: 8080
