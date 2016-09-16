@@ -14,6 +14,10 @@ Vagrant.configure('2') { |c|
 #   Full docs at https://docs.vagrantup.com
 #   Argument to configure() is configuration version, always '2'.
 #   Search for boxes at https://atlas.hashicorp.com/search.
+#   Multiple hosts derived from base configuration (named "default"):
+#       config.vm.define("host1") { |h|
+#           h.vm.network "private_network", ip: '192.168.50.3'; #etc
+#       }
 #   Map ports with
 #       c.vm.network 'forwarded_port', guest: 80, host: 8080
 #   Set up private network or public one (usually with a bridge):
@@ -22,7 +26,7 @@ Vagrant.configure('2') { |c|
 #   Share an additional folder to the guest VM (host path, guest path, opts):
 #       c.vm.synced_folder '../data', '/vagrant_data'
 #   Sample provider-specific options:
-#       c.vm.provider 'virtualbox' { |vb|
+#       c.vm.provider('virtualbox') { |vb|
 #           vb.gui = true
 #           vb.memory = '1024'
 #       }
