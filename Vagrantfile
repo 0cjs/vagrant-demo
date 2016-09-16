@@ -1,6 +1,19 @@
 Vagrant.configure('2') { |c|
     c.vm.box = 'boxcutter/centos72'
 
+    #   Configure a serial port on the VM. Optionally, enable the
+    #   graphical console if you want to verify that it can be used
+    #   along with the serial console.
+    #
+    #   Run the `console` script to connect to the serial port.
+    #   This can be done before `vagrant up` to connect at boot.
+    #
+    c.vm.provider("virtualbox") { |v|
+        v.customize ['modifyvm', :id,
+            '--uart1', '0x3f8', '4', '--uartmode1', 'server', '.com1' ]
+        v.gui = false
+    }
+
     #   Don't run .home/public/Setup without saving authorized_hosts first!
     dhsrc = ENV['HOME'] + '/.home/public'; Dir.exist?(dhsrc) \
         && c.vm.provision('file', source: dhsrc, destination: '~/.home/public')

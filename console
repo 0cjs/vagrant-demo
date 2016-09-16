@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -e
+
+socket=.com1
+
+err() { echo 1>&2 "$@"; exit 1; }
+
+connect() {
+    local sock=$1
+    [ -e $sock ] || return 0
+    [ -S $sock ] || err "$sock is not a socket"
+    echo "===== Connected to $sock. End session with ^@."
+    socat UNIX:$sock STDIO,raw,echo=0,escape=0
+    echo; echo "===== $sock disconnected."
+    return 1
+}
+
+# The `-p` or `--persist` option will wait to connect again if the
+# server shuts down the connection. This is useful if you're bringing
+# a guest down and up again while testing. To exit in this case, type
+# ^C immediately after typing ^@.
+#
+case "$1" in
+    "")             persist=break;;
+    -p|--persist)   persist=true;;
+    *)              err "Usage: $(basename $0) [-p|--persist]"
+esac
+
+connect $socket || [ $persist = true ]
+echo "===== Waiting for $socket to appear."
+while sleep 0.5; do
+    connect $socket || $persist
+done
