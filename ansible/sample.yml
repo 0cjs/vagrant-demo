@@ -1,0 +1,16 @@
+#
+#  ansible/sample.yml - demo of ansible tasks that make no changes
+#
+#  No need to use `-C` because it changes nothing.
+#  Run with `-v` to see details about the return values,
+#  and `-vvv` to see the connection information.
+#
+---
+- hosts: vagrant
+  tasks:
+  - name: ping
+    ping:
+  - name: id
+    command: id
+  - name: ls
+    command: ls /vagrant
