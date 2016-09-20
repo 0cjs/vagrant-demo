@@ -14,6 +14,11 @@ Vagrant.configure('2') { |c|
         v.gui = false
     }
 
+    c.vm.provision('ansible') { |a|
+        a.groups = { vagrant: 'default' }
+        a.playbook = 'ansible/setup.yml'
+    }
+
     #   Don't run .home/public/Setup without saving authorized_hosts first!
     dhsrc = ENV['HOME'] + '/.home/public'; Dir.exist?(dhsrc) \
         && c.vm.provision('file', source: dhsrc, destination: '~/.home/public')
