@@ -7,10 +7,12 @@
 #
 ---
 - hosts: vagrant
+  vars:
+    ls_dir: /vagrant
   tasks:
   - name: ping
     ping:
   - name: id
     command: id
   - name: ls
-    command: ls /vagrant
+    command: ls {{ls_dir}}
