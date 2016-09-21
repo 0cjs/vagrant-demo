@@ -3,7 +3,7 @@
   remote_user: bogus        # Login user; appears to have no effect?!
   become: yes               # becomes root (become_user changes this)
   tasks:
-  - name: id
-    command: id
-  - name: git installed
-    yum: name=git state=present
+    - name: id
+      command: id
+    - name: git installed
+      yum: name=git state=present
