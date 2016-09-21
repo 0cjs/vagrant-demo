@@ -30,10 +30,11 @@ This repo also includes a demonstration of using [Ansible] to provision
 (either manually or via Vagrant) the guest; documentation is provided
 in the various files. 
 
-Comments in [`ansible.cfg`] describe how to run Ansible manually.
-[`ansible/hosts`] contains the host inventory used when doing so, and
-it may need to be tweaked depending on what dynamic information (e.g.,
-SSH server port) Vagrant chose when it started your guest.
+Comments in [`ansible.cfg`] and [`ansible/requirements.yml`] describe
+how to run Ansible manually. [`ansible/hosts`] contains the host
+inventory used when doing so, and it may need to be tweaked depending
+on what dynamic information (e.g., SSH server port) Vagrant chose when
+it started your guest.
 
 The host inventory is automatically generated when Vagrant provisions
 the guest; [`Vagrantfile`] determines which playbook is used.
@@ -51,6 +52,7 @@ Two sample playbooks are included.
 [Ansible]: https://docs.ansible.com/ansible/
 [`Vagrantfile`]: Vagrantfile
 [`ansible.cfg`]: ansible.cfg
+[`ansible/requirements.yml`]: ansible/requirements.yml
 [`ansible/hosts`]: ansible/hosts
 [`ansible/sample.yml`]: ansible/sample.yml
 [`ansible/setup.yml`]: ansible/setup.yml

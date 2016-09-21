@@ -16,6 +16,7 @@ Vagrant.configure('2') { |c|
 
     c.vm.provision('ansible') { |a|
         a.groups = { vagrant: 'default' }
+        a.galaxy_role_file = 'ansible/requirements.yml'
         a.playbook = 'ansible/setup.yml'
     }
 

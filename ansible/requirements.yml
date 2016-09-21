@@ -1,0 +1,7 @@
+---
+# Vagrant is configured to use this file automatically.
+# For manual use of `ansible-playbook`, you must first run
+#   ansible-galaxy install -r ansible/requirements.yml
+
+- src: geerlingguy.repo-epel
+- src: officel.etckeeper
