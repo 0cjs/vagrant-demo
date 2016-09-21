@@ -36,11 +36,17 @@ it may need to be tweaked depending on what dynamic information (e.g.,
 SSH server port) Vagrant chose when it started your guest.
 
 The host inventory is automatically generated when Vagrant provisions
-the host; [`Vagrantfile`] determines which playbook is used.
+the guest; [`Vagrantfile`] determines which playbook is used.
 
-Two sample playbooks are included. [`ansible/sample.yml`] demonstrates
-various things that do not change the host; [`ansible/setup.yml`] does
-things like installing packages.
+Two sample playbooks are included.
+
+* [`ansible/sample.yml`] demonstrates various things that do not
+  change the guest, including including tasks, variables and a sample
+  role (that does nothing) created with `ansible-galaxy init
+  template-role -p ansible/roles/`
+
+* [`ansible/setup.yml`] does basic setup of a host such as installing
+  useful packages; Vagrant uses this to provision the guest.
 
 [Ansible]: https://docs.ansible.com/ansible/
 [`Vagrantfile`]: Vagrantfile

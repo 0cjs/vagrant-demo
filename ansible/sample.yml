@@ -9,6 +9,8 @@
 - hosts: vagrant
   vars:
       ls_dir: /vagrant
+  roles:
+    - template-role             # roles always run before loose tasks
   tasks:
     - name: ping
       ping:
