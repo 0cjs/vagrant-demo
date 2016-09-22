@@ -48,8 +48,9 @@ Two sample playbooks are included.
 
 * [`ansible/sample.yml`] demonstrates various things that do not
   change the guest, including including tasks, variables and a sample
-  role (that does nothing) created with `ansible-galaxy init
-  template-role -p ansible/roles/`
+  role (that does nothing) created with `
+    ansible-galaxy init template-role -p ansible/roles/
+  `.
 
 * [`ansible/setup.yml`] does basic setup of a host such as installing
   useful packages; Vagrant uses this to provision the guest.
