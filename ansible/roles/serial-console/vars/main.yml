@@ -1,0 +1,3 @@
+---
+grubcfg_src_path: /etc/default/grub
+grubcfg_out_path: /boot/grub2/grub.cfg

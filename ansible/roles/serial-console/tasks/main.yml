@@ -1,0 +1,22 @@
+---
+
+- stat: follow=true path={{grubcfg_src_path}}
+  register: grubcfg_src
+
+- name: Confirm grubcfg_src_path exists
+  fail: msg="Cannot read {{grubcfg_src_path}}"
+  when: grubcfg_src.stat.exists != true
+
+- stat: follow=true path={{grubcfg_out_path}}
+  register: grubcfg_out
+
+- name: Configrm grubcfg_out_path exists
+  fail: msg="Cannot read {{grubcfg_out_path}}"
+  when: grubcfg_out.stat.exists != true
+
+# XXX here we make the changes to grub.cfg
+# Maybe using https://docs.ansible.com/ansible/replace_module.html
+
+- name: Rebuild grub.cfg
+  command: grub2-mkconfig -o /boot/grub2/grub.cfg
+  #when: grub_conf_src.stat.mtime > grub_conf_dest.stat.mtime

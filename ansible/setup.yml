@@ -5,3 +5,4 @@
   roles:
     - geerlingguy.repo-epel
     - officel.etckeeper     # needs EPEL, brings in Git
+    - serial-console
