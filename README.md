@@ -9,8 +9,8 @@ another provider if you prefer.
 [VirtualBox]: https://www.virtualbox.org/
 
 
-Serial Port
------------
+Serial Console
+--------------
 
 `Vagrantfile` includes VirtualBox provider configuration to add a
 serial port to the guest, attached to a Unix domain socket (`.com1`).
@@ -18,4 +18,6 @@ You can connect to the serial port using the supplied `console`
 script.
 
 Note that nothing on the default guest is configured to talk to the
-serial port; you must set up the guest to do that manually.
+serial port; you must set up the guest to do that manually. You can
+read the instructions in [`SERIAL.md`](SERIAL.md) to learn how to set
+up a serial console on your guest.
