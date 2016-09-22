@@ -5,6 +5,11 @@ This repository demonstrates and documents the use of [Vagrant]. It
 uses the [VirtualBox] provider, but can easily be tweaked to use
 another provider if you prefer.
 
+Most everything should be documented in the various files, but further
+useful information might be gleaned from the commit log which not only
+may have further information in the commit messages but also
+demonstrates a progression of changes that introduce new features.
+
 [Vagrant]: https://www.vagrantup.com/docs/
 [VirtualBox]: https://www.virtualbox.org/
 
