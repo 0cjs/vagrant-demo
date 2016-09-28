@@ -31,9 +31,11 @@ up a serial console on your guest.
 Ansible
 -------
 
-This repo also includes a demonstration of using [Ansible] to provision
-(either manually or via Vagrant) the guest; documentation is provided
-in the various files. 
+This repo also includes a demonstration of using [Ansible] to
+provision (either manually or via Vagrant) the guest; documentation is
+provided in the various files. Ansible 2.1 is required; 1.7 will not
+work. (If you're running a Debian 8 system, the easiest way to install
+a more recent version of Ansible is to use `pip`.)
 
 Comments in [`ansible.cfg`] and [`ansible/requirements.yml`] describe
 how to run Ansible manually. [`ansible/hosts`] contains the host
