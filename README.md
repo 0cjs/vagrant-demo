@@ -28,6 +28,19 @@ read the instructions in [`SERIAL.md`](SERIAL.md) to learn how to set
 up a serial console on your guest.
 
 
+Dropbox
+-------
+
+The `install-dropbox.sh` script, run with the Vagrant shell
+provisioner, helps set up the VM to synchronize a Dropbox account.
+
+This should probably be further extended to run the dropbox daemon as
+a system service, as described [here]. That page also discusses how to
+install the additional CLI management script.
+
+[here]: https://www.digitalocean.com/community/tutorials/how-to-install-dropbox-client-as-a-service-on-ubuntu-14-04
+
+
 Ansible
 -------
 

@@ -14,6 +14,9 @@ Vagrant.configure('2') { |c|
         v.gui = false
     }
 
+    c.vm.provision('shell', privileged: false,
+        name: 'install-dropbox.sh', path: 'install-dropbox.sh')
+
     c.vm.provision('ansible') { |a|
         a.groups = { vagrant: 'default' }
         a.galaxy_role_file = 'ansible/requirements.yml'
