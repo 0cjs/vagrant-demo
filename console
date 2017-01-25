@@ -10,7 +10,7 @@ connect() {
     [ -e $sock ] || return 0
     [ -S $sock ] || err "$sock is not a socket"
     echo "===== Connected to $sock. End session with ^@."
-    socat UNIX:$sock STDIO,raw,echo=0,escape=0
+    $socat UNIX:$sock STDIO,raw,echo=0,escape=0
     echo; echo "===== $sock disconnected."
     return 1
 }
@@ -25,6 +25,10 @@ case "$1" in
     -p|--persist)   persist=true;;
     *)              err "Usage: $(basename $0) [-p|--persist]"
 esac
+
+socat=socat
+$socat -V >/dev/null 2>&1 \
+    || err "$(basename $0): $socat not found - install package?"
 
 connect $socket || [ $persist = true ]
 echo "===== Waiting for $socket to appear."
