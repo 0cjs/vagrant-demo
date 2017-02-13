@@ -1,5 +1,5 @@
 Vagrant.configure('2') { |c|
-    c.vm.box = 'boxcutter/centos72'
+    c.vm.box = 'centos/7'
 
     #   Configure a serial port on the VM. Optionally, enable the
     #   graphical console if you want to verify that it can be used
