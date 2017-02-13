@@ -8,9 +8,10 @@ Vagrant.configure('2') { |c|
     #   Run the `console` script to connect to the serial port.
     #   This can be done before `vagrant up` to connect at boot.
     #
+    com1_sock = File.join(File.dirname(__FILE__), '.com1')
     c.vm.provider("virtualbox") { |v|
         v.customize ['modifyvm', :id,
-            '--uart1', '0x3f8', '4', '--uartmode1', 'server', '.com1' ]
+            '--uart1', '0x3f8', '4', '--uartmode1', 'server', com1_sock, ]
         v.gui = false
     }
 
