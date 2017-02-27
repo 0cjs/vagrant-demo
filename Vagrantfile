@@ -1,5 +1,20 @@
 Vagrant.configure('2') { |c|
-    c.vm.box = 'centos/7'
+
+    # This configures a single VM named "default"
+    # c.vm.box = 'centos/7'
+
+    # Multi-machine configs specify a name for each machine.
+    # Vagrant will act on all hosts unless specific hosts are
+    # specifed; be careful with `vagrant up`!
+    #
+    c.vm.define('centos7')   { |c| c.vm.box = 'centos/7' }
+    {   centos7:    'centos/7',
+        centos6:    'centos/6',
+        centos5:    'boxcutter/centos511',
+        debian8:    'debian/jessie64',
+        debian7:    'debian/wheezy64',
+        debian6:    'puppetlabs/debian-6.0.10-64-nocm',
+    }.each { |name, box| c.vm.define(name) { |c| c.vm.box = box } }
 
     #   Configure a serial port on the VM. Optionally, enable the
     #   graphical console if you want to verify that it can be used
