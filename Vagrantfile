@@ -14,6 +14,8 @@ Vagrant.configure('2') { |c|
         debian8:    'debian/jessie64',
         debian7:    'debian/wheezy64',
         debian6:    'puppetlabs/debian-6.0.10-64-nocm',
+        ubuntu1404: 'ubuntu/trusty64',
+        ubuntu1604: 'ubuntu/xenial64',
     }.each { |name, box| c.vm.define(name) { |c| c.vm.box = box } }
 
     #   Configure a serial port on the VM. Optionally, enable the
