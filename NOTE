@@ -1,0 +1,3 @@
+This repo is for a "long term" vagrant box that don't get
+deleted and so has a nice long history for, e.g., having
+lots of logs to send to Graylog.

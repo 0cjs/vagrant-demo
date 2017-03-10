@@ -1,22 +1,7 @@
 Vagrant.configure('2') { |c|
 
-    # This configures a single VM named "default"
-    # c.vm.box = 'centos/7'
-
-    # Multi-machine configs specify a name for each machine.
-    # Vagrant will act on all hosts unless specific hosts are
-    # specifed; be careful with `vagrant up`!
-    #
-    c.vm.define('centos7')   { |c| c.vm.box = 'centos/7' }
-    {   centos7:    'centos/7',
-        centos6:    'centos/6',
-        centos5:    'boxcutter/centos511',
-        debian8:    'debian/jessie64',
-        debian7:    'debian/wheezy64',
-        debian6:    'puppetlabs/debian-6.0.10-64-nocm',
-        ubuntu1404: 'ubuntu/trusty64',
-        ubuntu1604: 'ubuntu/xenial64',
-    }.each { |name, box| c.vm.define(name) { |c| c.vm.box = box } }
+    c.vm.define('ltcent') { |c| c.vm.box = 'centos/7' }
+    c.vm.define('ltdeb')  { |c| c.vm.box = 'debian/jessie64' }  # Debian 8
 
     #   Configure a serial port on the VM. Optionally, enable the
     #   graphical console if you want to verify that it can be used
@@ -30,12 +15,6 @@ Vagrant.configure('2') { |c|
         v.customize ['modifyvm', :id,
             '--uart1', '0x3f8', '4', '--uartmode1', 'server', com1_sock, ]
         v.gui = false
-    }
-
-    c.vm.provision('ansible') { |a|
-        a.groups = { vagrant: 'default' }
-        a.galaxy_role_file = 'ansible/requirements.yml'
-        a.playbook = 'ansible/setup.yml'
     }
 
     #   Don't run .home/public/Setup without saving authorized_hosts first!
