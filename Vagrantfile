@@ -5,7 +5,6 @@ Vagrant.configure('2') { |c|
 
     # Multi-machine configs specify a name for each machine.
     #
-    c.vm.define('centos7')   { |c| c.vm.box = 'centos/7' }
     {   centos7:    'centos/7',
         centos6:    'centos/6',
         centos5:    'boxcutter/centos511',
