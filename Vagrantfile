@@ -1,7 +1,7 @@
 vmhost = `hostname -s`.chomp
 Vagrant.configure('2') { |c|
 
-    c.vm.define('ltcent') { |c|
+    c.vm.define('ltcent', autostart:false) { |c|
         c.vm.box = 'centos/7'
         c.vm.hostname = "ltcent-#{vmhost}"
         #   Vagrant should use this forwarding rather than generating its
@@ -15,7 +15,7 @@ Vagrant.configure('2') { |c|
         c.vm.network('private_network', auto_config: false,
             ip: '192.168.244.97', netmask: '28')
     }
-    c.vm.define('ltdeb')  { |c|
+    c.vm.define('ltdeb', autostart:false)  { |c|
         c.vm.box = 'debian/jessie64'        # Debian 8
         c.vm.hostname = "ltdeb-#{vmhost}"
         c.vm.network('forwarded_port', guest: 22, host: 2298)
