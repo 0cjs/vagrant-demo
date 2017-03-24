@@ -1,7 +1,27 @@
+vmhost = `hostname -s`.chomp
 Vagrant.configure('2') { |c|
 
-    c.vm.define('ltcent') { |c| c.vm.box = 'centos/7' }
-    c.vm.define('ltdeb')  { |c| c.vm.box = 'debian/jessie64' }  # Debian 8
+    c.vm.define('ltcent') { |c|
+        c.vm.box = 'centos/7'
+        c.vm.hostname = "ltcent-#{vmhost}"
+        #   Vagrant should use this forwarding rather than generating its
+        #   own, but it seems still to set up another forwarding in
+        #   `c.vm.usable_port_range` as well.
+        c.vm.network('forwarded_port', guest: 22, host: 2297)
+        #   This should assign the IP address below and no other to this
+        #   this VM. However, this appears to be almost completely ignored;
+        #   an automatic "nat" interface (Adapter 1) is still set up and
+        #   the "hostonly" interface (Adapter 2) has no address.
+        c.vm.network('private_network', auto_config: false,
+            ip: '192.168.244.97', netmask: '28')
+    }
+    c.vm.define('ltdeb')  { |c|
+        c.vm.box = 'debian/jessie64'        # Debian 8
+        c.vm.hostname = "ltdeb-#{vmhost}"
+        c.vm.network('forwarded_port', guest: 22, host: 2298)
+        c.vm.network('private_network', auto_config: false,
+            ip: '192.168.244.98', netmask: '28')
+    }
 
     #   Configure a serial port on the VM. Optionally, enable the
     #   graphical console if you want to verify that it can be used
