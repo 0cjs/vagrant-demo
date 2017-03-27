@@ -38,8 +38,11 @@ Vagrant.configure('2') { |c|
     }
 
     #   Don't run .home/public/Setup without saving authorized_hosts first!
-    dhsrc = ENV['HOME'] + '/.home/public'; Dir.exist?(dhsrc) \
-        && c.vm.provision('file', source: dhsrc, destination: '~/.home/public')
+    %w[ _dot-home public ].each { |d|
+        dhsrc = ENV['HOME'] + '/.home/' + d
+        Dir.exist?(dhsrc) && c.vm.provision('file',
+            source: dhsrc, destination: '~/.home/' + d)
+    }
 }
 
 # Bug notes:
